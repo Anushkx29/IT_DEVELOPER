@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Glass Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="login-page">
+
+
+<div class="login-container">
+    <h2>LOGIN</h2>
+
+    <!-- ✅ FORM ADDED -->
+    <form action="/login" method="POST">
+
+        <div class="input-group">
+            <input type="email" name="email" placeholder="Email" required>
+            <i class="fa-regular fa-envelope"></i>
+        </div>
+
+        <div class="input-group">
+            <input type="password" name="password" placeholder="Password" required>
+            <i class="fa-regular fa-eye-slash"></i>
+        </div>
+
+        <div class="options">
+            <label>
+                <input type="checkbox" name="remember">
+                Remember Me
+            </label>
+            <a href="#">Forgot Password?</a>
+        </div>
+
+        <!-- ✅ SUBMIT BUTTON -->
+        <button type="submit" class="login-btn">Login</button>
+
+    </form>
+
+    <div class="register">
+        Don’t have an account?
+        <!-- ✅ CORRECT LINK -->
+        <a href="/register">Register</a>
+    </div>
+</div>
+
+</body>
+</html>
