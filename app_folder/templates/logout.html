@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Logout | Portfolio Builder</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Logout CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/logout.css') }}">
+</head>
+<body>
+
+<div class="logout-page">
+
+    <div class="glass-card">
+
+        <i class="fa-solid fa-arrow-right-from-bracket logout-icon"></i>
+
+        <h2>Logged Out</h2>
+        <p>You have been successfully logged out.</p>
+
+        <a href="{{ url_for('login') }}" class="btn primary">
+            Login Again
+        </a>
+
+        <a href="{{ url_for('home') }}" class="btn secondary">
+            Go to Home
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

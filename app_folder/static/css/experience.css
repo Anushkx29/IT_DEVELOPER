@@ -1,0 +1,174 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+/* ============================
+   BACKGROUND
+============================ */
+.experience-page {
+    min-height: 100vh;
+    width: 100%;
+    background: url("/static/images/experience.jpg") no-repeat center center;
+    background-size: cover;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ============================
+   GLASS CARD
+============================ */
+.glass-card {
+    width: 520px;          /* ⬅️ wider */
+    max-width: 90%;
+    padding: 18px 24px;     /* ⬇️ less vertical padding */
+    
+    
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+
+    position: relative;
+}
+
+
+/* ============================
+   HEADER
+============================ */
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 22px;
+}
+
+.card-header h2 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #000000;
+}
+
+.icons {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    color: #444;
+    font-size: 14px;
+}
+
+.icons i {
+    cursor: pointer;
+}
+
+.tips {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* ============================
+   FORM ELEMENTS
+============================ */
+form label {
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 6px;
+    display: block;
+    color: #000000;
+}
+
+form input,
+form textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: none;
+    outline: none;
+    background: rgba(255, 255, 255, 0.75);
+    margin-bottom: 16px;
+    font-size: 14px;
+}
+
+/* Employer + Link */
+.input-group {
+    display: flex;
+    gap: 10px;
+}
+
+.link-btn {
+    padding: 0 14px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.08);
+    font-size: 13px;
+}
+
+/* Date Row */
+.row {
+    display: flex;
+    gap: 12px;
+}
+
+.row div {
+    flex: 1;
+}
+
+/* ============================
+   TOOLBAR
+============================ */
+.toolbar {
+    display: flex;
+    gap: 14px;
+    padding: 10px;
+    border-radius: 12px 12px 0 0;
+    background: rgba(255, 255, 255, 0.6);
+    margin-bottom: -1px;
+    font-size: 14px;
+}
+
+.toolbar span {
+    cursor: pointer;
+    color: #444;
+}
+
+.toolbar .active {
+    background: #7b61ff;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 6px;
+}
+
+/* ============================
+   DONE BUTTON
+============================ */
+.done-btn {
+    width: 100%;
+    padding: 15px;
+    border-radius: 18px;
+    border: none;
+    cursor: pointer;
+
+    background: linear-gradient(135deg, #ff0080, #ff5f6d);
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+
+    margin-top: 10px;
+}
+
+/* ============================
+   RESPONSIVE
+============================ */
+@media (max-width: 768px) {
+    .glass-card {
+        margin: 30px;
+    }
+}

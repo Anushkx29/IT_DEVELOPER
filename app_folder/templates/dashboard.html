@@ -1,81 +1,152 @@
-from flask import Flask, render_template, request, redirect, url_for, session
-import mysql.connector
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard | Portfolio Builder</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-app = Flask(__name__)
-app.secret_key = "secret_key_123"  # for session
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
-# -------------------------
-# DATABASE CONNECTION
-# -------------------------
-db = mysql.connector.connect(
-    host="localhost",
-    user="root",
-    password="Anushkx_29",
-    database="portfolio_builder"
-)
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 
-cursor = db.cursor(dictionary=True)
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
 
-# -------------------------
-# LOGIN ROUTE
-# -------------------------
-@app.route("/", methods=["GET", "POST"])
-def login():
-    if request.method == "POST":
-        email = request.form["email"]
-        password = request.form["password"]
+<body class="dashboard-page">
 
-        query = "SELECT * FROM users WHERE email=%s AND password=%s"
-        cursor.execute(query, (email, password))
-        user = cursor.fetchone()
+<div class="dashboard-container">
 
-        if user:
-            session["user_id"] = user["id"]
-            session["user_name"] = user["name"]
-            return redirect(url_for("dashboard"))
-        else:
-            return "Invalid email or password"
+    <!-- SIDEBAR -->
+    <aside class="sidebar glass sidebar-bg">
+        <h2 class="logo">Portfolio Builder</h2>
 
-    return render_template("index.html")
+        <ul class="menu">
+            <li class="active">
+    <a href="/dashboard" class="menu-link">
+        <i class="fa fa-user"></i>
+        <span>Profile</span>
+    </a>
+</li>
 
-# -------------------------
-# REGISTER ROUTE
-# -------------------------
-@app.route("/register", methods=["GET", "POST"])
-def register():
-    if request.method == "POST":
-        name = request.form["name"]
-        email = request.form["email"]
-        password = request.form["password"]
+<li>
+    <a href="/education" class="menu-link">
+        <i class="fa fa-graduation-cap"></i>
+        <span>Education</span>
+    </a>
+</li>
 
-        query = "INSERT INTO users (name, email, password) VALUES (%s, %s, %s)"
-        cursor.execute(query, (name, email, password))
-        db.commit()
+<li>
+    <a href="/skills" class="menu-link">
+        <i class="fa fa-brain"></i>
+        <span>Skills</span>
+    </a>
+</li>
 
-        return redirect(url_for("login"))
+<li>
+    <a href="/projects" class="menu-link">
+        <i class="fa fa-folder"></i>
+        <span>Projects</span>
+    </a>
+</li>
 
-    return render_template("register.html")
+<li>
+    <a href="{{ url_for('certificates') }}" class="menu-link">
+        <i class="fa fa-scroll"></i>
+        <span>Certificates</span>
+    </a>
+</li>
 
-# -------------------------
-# DASHBOARD ROUTE
-# -------------------------
-@app.route("/dashboard")
-def dashboard():
-    if "user_id" not in session:
-        return redirect(url_for("login"))
 
-    return render_template("dashboard.html", name=session["user_name"])
 
-# -------------------------
-# LOGOUT
-# -------------------------
-@app.route("/logout")
-def logout():
-    session.clear()
-    return redirect(url_for("login"))
+            <li>
+                <a href="/upload-resume" class="menu-link">
+                    <i class="fa-solid fa-file-arrow-up"></i>
+                    <span>Upload Resume</span>
+                </a>
+            </li>
 
-# -------------------------
-# RUN SERVER
-# -------------------------
-if __name__ == "__main__":
-    app.run(debug=True)
+
+            
+            <li>
+                <a href="{{ url_for('experience') }}">
+                    <i class="fa fa-briefcase"></i>
+                    <span>Professional Experiences</span>
+                </a>
+           </li>
+
+            
+
+            <li>
+                <a href="/logout" class="menu-link">
+                    <i class="fa fa-sign-out"></i>
+                    <span>Logout</span>
+                </a>
+            </li>
+        </ul>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="content">
+
+        <h1>Profile Settings</h1>
+        <p class="subtitle">Manage your personal and professional details</p>
+
+        <!-- PROFILE PHOTO -->
+        <div class="glass card profile-photo-box">
+            <div class="avatar">
+                <img src="{{ url_for('static', filename='images/profile.jpg') }}">
+            </div>
+            <button class="upload-btn" type="button">Upload Photo</button>
+        </div>
+
+        <!-- ✅ SINGLE FORM (VERY IMPORTANT) -->
+        <form method="POST" action="/dashboard">
+
+            <!-- BASIC INFO -->
+            <div class="glass card">
+                <h3>Basic Information</h3>
+
+                <div class="form-grid">
+                    <input type="text" name="name" placeholder="Full Name"
+                           value="{{ profile.name if profile else '' }}">
+
+                    <input type="email" name="email" placeholder="Email"
+                           value="{{ profile.email if profile else '' }}">
+
+                    <input type="text" name="phone" placeholder="Phone"
+                           value="{{ profile.phone if profile else '' }}">
+
+                    <input type="text" name="location" placeholder="Location"
+                           value="{{ profile.location if profile else '' }}">
+
+                    <textarea name="bio" placeholder="Bio">{{ profile.bio if profile else '' }}</textarea>
+                </div>
+            </div>
+
+            <!-- SOCIAL LINKS -->
+            <div class="glass card">
+                <h3>Social Links</h3>
+
+                <div class="form-grid">
+                    <input type="text" name="github" placeholder="GitHub Profile URL"
+                           value="{{ profile.github if profile else '' }}">
+
+                    <input type="text" name="linkedin" placeholder="LinkedIn Profile URL"
+                           value="{{ profile.linkedin if profile else '' }}">
+                </div>
+            </div>
+
+            <!-- SAVE BUTTON -->
+            <button type="submit" class="save-btn">Save Changes</button>
+
+        </form>
+
+    </main>
+
+</div>
+
+</body>
+</html>

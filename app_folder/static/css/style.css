@@ -181,3 +181,413 @@ body.register-page::before {
 .register a:hover {
   text-decoration: underline;
 }
+
+/* ================= DASHBOARD PAGE ================= */
+.dashboard-page {
+    background: url("../images/dashboard.bg.jpg") no-repeat center/cover;
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+.dashboard-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* ================= GLASS EFFECT ================= */
+.glass {
+    background: rgba(255, 255, 255, 0.22); /* increased opacity */
+    backdrop-filter: blur(20px);
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+
+
+/* ================= SIDEBAR ================= */
+.sidebar {
+    width: 260px;
+    padding: 25px;
+    color: white;
+
+    background: rgba(255, 255, 255, 0.18); /* stronger glass */
+    backdrop-filter: blur(20px);
+    border-right: 1px solid rgba(255,255,255,0.25);
+
+    box-shadow: 6px 0 25px rgba(0,0,0,0.25);
+}
+.sidebar .logo {
+    margin-bottom: 30px;
+}
+
+.menu {
+    list-style: none;
+    padding: 0;
+}
+
+.menu li {
+    padding: 14px;
+    border-radius: 10px;
+    margin-bottom: 8px;
+}
+
+.menu li i {
+    margin-right: 10px;
+}
+
+.menu li:hover,
+.menu li.active {
+    background: rgba(255, 255, 255, 0.18);
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+/* ================= CONTENT ================= */
+.content {
+    flex: 1;
+    padding: 40px;
+    color: white;
+}
+
+.subtitle {
+    opacity: 0.75;
+    margin-bottom: 25px;
+}
+
+/* ================= CARDS ================= */
+.card {
+    padding: 25px;
+    margin-bottom: 25px;
+}
+
+/* ================= PROFILE PHOTO ================= */
+.profile-photo-box {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.avatar {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid rgba(255,255,255,0.6);
+}
+
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ===== DASHBOARD BUTTONS (MATCH SKILLS DONE BUTTON) ===== */
+
+.upload-btn,
+.save-btn {
+    background: linear-gradient(135deg, #ff0080, #ff6a00);
+    border: none;
+    padding: 12px 26px;
+    border-radius: 16px;
+    color: white !important;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.upload-btn:hover,
+.save-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(255, 0, 128, 0.45);
+}
+
+
+/* ================= FORM ================= */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.form-grid input,
+.form-grid textarea {
+    background: rgba(255,255,255,0.18);
+    border: none;
+    padding: 12px;
+    color: white;
+    border-radius: 10px;
+}
+
+.form-grid textarea {
+    grid-column: span 2;
+    resize: none;
+}
+
+/* ================= SOCIAL LINKS ================= */
+.social-input {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.social-input i {
+    font-size: 20px;
+    color: white;
+}
+
+.social-input input {
+    flex: 1;
+    padding: 10px 15px;
+    border-radius: 12px;
+    border: none;
+    background: rgba(255,255,255,0.2);
+    color: white;
+}
+
+/* Sidebar links fix */
+.sidebar a {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Prevent blue after click */
+.sidebar a:visited,
+.sidebar a:hover,
+.sidebar a:active {
+    color: white;
+}
+
+/* Hover effect */
+.sidebar li:hover {
+    background: rgba(255,255,255,0.18);
+}
+
+/* ================= SIDEBAR FIX ================= */
+
+.sidebar {
+    width: 280px;
+    padding: 35px 25px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+/* separate background only for sidebar */
+.sidebar-bg {
+    background: rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(18px);
+}
+
+/* sidebar title */
+.sidebar .logo {
+    font-size: 22px;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+/* menu spacing */
+.menu {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px; /* 👈 THIS fixes congestion */
+}
+
+/* each item */
+.menu li {
+    padding: 14px 16px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+/* hover + active */
+.menu li:hover,
+.menu li.active {
+    background: rgba(255, 255, 255, 0.22);
+}
+
+/* icons */
+.menu i {
+    font-size: 16px;
+    min-width: 20px;
+}
+
+/* text */
+.menu span {
+    font-size: 15px;
+}
+
+/* remove blue link styles */
+.menu-link {
+    text-decoration: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+}
+
+
+/* ================= SKILLS PAGE ================= */
+
+.skills-wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px;
+}
+
+.skills-card {
+    width: 700px;
+    padding: 35px;
+    border-radius: 22px;
+    background: rgba(255,255,255,0.18);
+    backdrop-filter: blur(18px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    color: #222;
+    position: relative;
+    top: 50px;
+}
+
+.skills-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.skill-actions span {
+    margin-right: 20px;
+    font-weight: 500;
+}
+
+.skill-actions button {
+    background: rgba(255,255,255,0.3);
+    border: none;
+    border-radius: 10px;
+    padding: 8px 12px;
+    margin-left: 8px;
+}
+
+.glass-input {
+    width: 100%;
+    padding: 14px;
+    border-radius: 14px;
+    border: none;
+    margin-top: 6px;
+    margin-bottom: 18px;
+    background: rgba(255,255,255,0.4);
+}
+
+.editor-toolbar {
+    background: rgba(255,255,255,0.5);
+    padding: 10px;
+    border-radius: 14px 14px 0 0;
+}
+
+.editor-toolbar button {
+    background: transparent;
+    border: none;
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+.editor-area {
+    min-height: 120px;
+    padding: 14px;
+    background: rgba(255,255,255,0.4);
+    border-radius: 0 0 14px 14px;
+}
+
+.done-wrapper {
+    margin-top: 35px;
+}
+
+.done-btn {
+    width: 320px;
+    padding: 15px;
+    border: none;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #ff0080, #ff6a00);
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+
+    position: relative;
+    top: 45px;   /* ⬇️ move down */
+}
+
+
+.done-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+
+/* ============ SKILLS PAGE BACKGROUND ONLY ============ */
+.skills-page {
+    background: url("../images/skills.jpg") no-repeat center center / cover !important;
+    min-height: 100vh;
+}
+
+.skills-card {
+    background: rgba(255,255,255,0.25) !important;
+    backdrop-filter: blur(20px) saturate(160%);
+}
+
+.menu-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ===== DASHBOARD TEXT FIX (MATCH SKILLS PAGE) ===== */
+
+.dashboard-page,
+.dashboard-page * {
+    color: #222 !important;
+}
+
+.dashboard-page input,
+.dashboard-page textarea {
+    color: #222 !important;
+}
+
+.saved-skills {
+    margin-top: 40px;
+}
+
+.skill-item {
+    padding: 20px;
+    margin-bottom: 15px;
+}
+
+.skill-level {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 6px 12px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.25);
+    font-size: 14px;
+}
+

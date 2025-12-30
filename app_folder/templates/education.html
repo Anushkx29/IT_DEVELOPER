@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Education | Portfolio Builder</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Education CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/education.css') }}">
+</head>
+<body>
+
+<div class="education-page">
+
+    <!-- GLASS CARD -->
+    <div class="glass-card">
+
+        <!-- HEADER -->
+        <div class="card-header">
+            <h2>Edit Entry</h2>
+            <div class="icons">
+                <i class="fa-regular fa-eye"></i>
+                <i class="fa-regular fa-trash-can"></i>
+            </div>
+        </div>
+
+        <!-- FLASH MESSAGES -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <p class="flash {{ category }}">{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <!-- FORM -->
+        <form method="POST" action="{{ url_for('education') }}">
+
+            <label>School</label>
+            <div class="input-group">
+                <input type="text" name="school" placeholder="Enter School Name" required>
+                <button type="button" class="link-btn">
+                    <i class="fa-solid fa-link"></i> Link
+                </button>
+            </div>
+
+            <label>Degree</label>
+            <input type="text" name="degree" placeholder="Enter Degree / Field Of Study">
+
+            <div class="row">
+                <div>
+                    <label>Start Date</label>
+                    <input type="text" name="start_date" placeholder="MM/YYYY">
+                </div>
+                <div>
+                    <label>End Date</label>
+                    <input type="text" name="end_date" placeholder="MM/YYYY">
+                </div>
+            </div>
+
+            <label>Location</label>
+            <input type="text" name="location" placeholder="City, Country">
+
+            <label>Description</label>
+            <textarea name="description" rows="4"></textarea>
+
+            <button type="submit" class="done-btn">
+                <i class="fa-solid fa-check"></i> Done
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+</html>

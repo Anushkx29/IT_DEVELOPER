@@ -1,0 +1,100 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/* FULL PAGE BACKGROUND */
+.upload-wrapper {
+    min-height: 100vh;
+    width: 100%;
+    background: url("/static/images/upload_resume.jpg") no-repeat center center;
+    background-size: cover;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding-left: 100px;   /* 👈 subtle right shift */
+}
+
+
+
+
+
+.upload-card.glass {
+    transform: translateX(180px);
+    background: rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    padding: 30px;
+    width: 420px;
+    transform: translateX(35px);
+}
+
+
+/* HEADER */
+.upload-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.upload-header h2 {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.close-btn {
+    border: none;
+    background: none;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+/* FILE INFO */
+.file-info {
+    display: flex;
+    gap: 16px;
+    margin: 18px 0;
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+/* DROP ZONE */
+.upload-drop {
+    border: 2px dashed #ff8db3;
+    border-radius: 16px;
+    padding: 45px 20px;
+    text-align: center;
+    cursor: pointer;
+    background: rgba(255,255,255,0.4);
+}
+
+.upload-drop i {
+    font-size: 34px;
+    color: #ff5c8a;
+    margin-bottom: 10px;
+}
+
+.browse-text span {
+    color: #ff5c8a;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+/* FOOTER */
+.upload-footer {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.upload-btn {
+    padding: 10px 26px;
+    border-radius: 14px;
+    border: none;
+    background: linear-gradient(135deg, #ff0080, #ff6a00);
+    color: #fff;
+    cursor: pointer;
+}

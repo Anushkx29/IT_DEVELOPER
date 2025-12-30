@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload Resume</title>
+
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- YOUR CSS -->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/upload_resume.css') }}">
+</head>
+
+<body>
+
+<div class="upload-wrapper">
+
+    <form method="POST"
+      action="{{ url_for('upload_resume') }}"
+      enctype="multipart/form-data"
+      class="upload-card glass">
+
+    <!-- HEADER -->
+    <div class="upload-header">
+        <h2>Upload Resume</h2>
+        <button type="button" class="close-btn">&times;</button>
+    </div>
+
+    <!-- FILE INFO -->
+    <div class="file-info">
+        <span>📄 PDF only</span>
+        <span>Max size: 3 MB</span>
+    </div>
+
+    <!-- DROP AREA -->
+    <div class="upload-drop">
+        <i class="fa-solid fa-cloud-arrow-up"></i>
+        <p><strong>Drag & drop</strong> to upload</p>
+        <p class="file-name" id="fileName">No file selected</p>
+
+        <p>or <span class="browse">browse</span></p>
+
+        <!-- ✅ name added -->
+        <input type="file"
+               id="resumeInput"
+               name="resume"
+               accept=".pdf"
+               hidden>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="upload-footer">
+        <p>Only PDF resumes are accepted.</p>
+
+        <!-- ✅ submit -->
+        <button type="submit" class="upload-btn">
+            Upload
+        </button>
+    </div>
+
+
+
+</form>
+
+<!-- JS -->
+<script>
+const fileInput = document.getElementById('resumeInput');
+const fileNameText = document.getElementById('fileName');
+
+document.querySelector('.upload-drop').onclick = () =>
+    fileInput.click();
+
+fileInput.addEventListener('change', function () {
+    const file = this.files[0];
+
+    if (!file) {
+        fileNameText.textContent = "No file selected";
+        return;
+    }
+
+    if (file.type !== "application/pdf") {
+        alert("Only PDF files allowed");
+        this.value = "";
+        fileNameText.textContent = "No file selected";
+        return;
+    }
+
+    if (file.size > 3 * 1024 * 1024) {
+        alert("File size must be under 3 MB");
+        this.value = "";
+        fileNameText.textContent = "No file selected";
+        return;
+    }
+
+    // ✅ SHOW FILE NAME
+    fileNameText.textContent = "Selected: " + file.name;
+});
+</script>

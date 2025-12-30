@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Projects | Portfolio Builder</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+<!-- GLOBAL CSS -->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+<!-- PROJECTS ONLY CSS -->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/projects.css') }}">
+</head>
+
+<body class="projects-page">
+
+<div class="projects-wrapper">
+
+<form class="projects-card" method="POST">
+
+    <!-- HEADER -->
+    <div class="projects-header">
+        <h2>Edit Project</h2>
+        <div class="project-actions">
+            <span><i class="fa-regular fa-lightbulb"></i> Get Tips</span>
+            <button type="button"><i class="fa-regular fa-eye"></i></button>
+            <button type="button"><i class="fa-regular fa-trash-can"></i></button>
+        </div>
+    </div>
+
+    <!-- TITLE -->
+    <label>Project Title</label>
+    <input type="text"
+           name="title"
+           placeholder="Enter project title"
+           value="{{ project.title if project }}"
+           required>
+
+    <!-- DESCRIPTION -->
+    <label>Description</label>
+    <textarea name="description"
+              placeholder="Describe your project..."
+              rows="4">{{ project.description if project }}</textarea>
+
+    <!-- TECH STACK -->
+    <label>Tech Stack</label>
+    <input type="text"
+           name="tech_stack"
+           placeholder="HTML, CSS, Flask, MySQL"
+           value="{{ project.tech_stack if project }}">
+
+    <!-- PROJECT LINK -->
+    <label>Project Link</label>
+    <input type="url"
+           name="project_link"
+           placeholder="https://github.com/..."
+           value="{{ project.project_link if project }}">
+
+    <!-- DONE BUTTON -->
+    <div class="done-wrapper">
+        <button type="submit" class="done-btn">
+            <i class="fa-solid fa-check"></i> Done
+        </button>
+    </div>
+
+</form>
+
+</div>
+
+</body>
+</html>

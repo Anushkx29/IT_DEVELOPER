@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Certificates | Portfolio Builder</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/certificates.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body class="certificates-bg">
+
+<div class="glass-card">
+
+    <div class="card-header">
+        <h2>Edit Certificate</h2>
+        <div class="header-actions">
+            <span><i class="fa-regular fa-lightbulb"></i> Get Tips</span>
+            <i class="fa-regular fa-eye"></i>
+            <i class="fa-regular fa-trash-can"></i>
+        </div>
+    </div>
+
+    <form method="POST">
+
+    <label>Certificate Title</label>
+    <input type="text" name="title" value="{{ certificate.certificate_title if certificate }}" placeholder="Enter certificate name" required>
+
+    <label>Issued By</label>
+    <input type="text" name="issued_by" value="{{ certificate.issued_by if certificate }}" placeholder="e.g. Coursera, NPTEL" required>
+
+    <label>Certificate Link</label>
+    <input type="url" name="cert_link" value="{{ certificate.certificate_link if certificate }}" placeholder="https://certificate-link.com">
+
+    <label>Additional Information</label>
+    <textarea rows="4" name="info">{{ certificate.additional_info if certificate }}</textarea>
+
+    <button class="done-btn">
+        <i class="fa-solid fa-check"></i> Done
+    </button>
+</form>
+
+
+
+</div>
+
+</body>
+</html>

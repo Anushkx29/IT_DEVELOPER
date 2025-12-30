@@ -1,0 +1,4 @@
+@app.route("/dashboard", methods=["GET", "POST"])
+def dashboard():
+    print("REQUEST METHOD:", request.method)
+    print("FORM DATA:", request.form)

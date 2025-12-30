@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Skills | Portfolio Builder</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body class="dashboard-page skills-page">
+
+<div class="skills-wrapper">
+
+<form method="POST" action="{{ url_for('skills') }}" onsubmit="saveDescription()">
+
+<div class="skills-card">
+
+    <div class="skills-header">
+        <h2>Edit Entry</h2>
+        <div class="skill-actions">
+            <span><i class="fa-regular fa-lightbulb"></i> Get Tips</span>
+            <button type="button"><i class="fa-regular fa-eye"></i></button>
+            <button type="button"><i class="fa-regular fa-trash-can"></i></button>
+        </div>
+    </div>
+
+    <!-- SKILL NAME -->
+    <input type="text"
+       name="skill"
+       placeholder="Enter Skill"
+       class="glass-input"
+       value="{{ skill.skill_name if skill else '' }}"
+       required>
+
+    <!-- DESCRIPTION -->
+    <label>Information / Sub-skills</label>
+
+    <div class="editor-toolbar">
+        <button type="button" onclick="format('bold')"><b>B</b></button>
+        <button type="button" onclick="format('italic')"><i>I</i></button>
+        <button type="button" onclick="format('underline')"><u>U</u></button>
+        <button type="button" onclick="format('insertUnorderedList')">
+            <i class="fa-solid fa-list"></i>
+        </button>
+        <button type="button" onclick="format('createLink')">
+            <i class="fa-solid fa-link"></i>
+        </button>
+    </div>
+
+    <div class="editor-area" contenteditable="true" id="editor">
+    {{ skill.description | safe if skill else '' }}
+    </div>
+
+
+    <!-- hidden input to send editor content -->
+    <input type="hidden" name="description" id="description">
+
+    <!-- SKILL LEVEL -->
+    <label>Skill level</label>
+    <select name="level" class="glass-input" required>
+        <option value="">Select skill level</option>
+        <option>Beginner</option>
+        <option>Intermediate</option>
+        <option>Advanced</option>
+        <option>Expert</option>
+    </select>
+</div>
+
+<div class="done-wrapper">
+    <button class="done-btn" type="submit">
+        <i class="fa-solid fa-check"></i> Done
+    </button>
+</div>
+
+</form>
+</div>
+
+
+<script>
+function format(cmd){
+    if(cmd === 'createLink'){
+        let url = prompt("Enter URL:");
+        document.execCommand(cmd, false, url);
+    } else {
+        document.execCommand(cmd, false, null);
+    }
+}
+
+function saveDescription(){
+    document.getElementById("description").value =
+        document.getElementById("editor").innerHTML;
+}
+</script>
+
+</body>
+</html>
